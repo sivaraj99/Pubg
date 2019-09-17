@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Cart</title>
+	<link rel="favicon" href="images/PUBG-Logo-Transparent-Background.png" sizes="150x150">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Mukta+Malar:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Mukta+Vaani:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body style="background-color: black;">
+	<div id="alert">Note : Quantity must be more the 1</div>
+	<div class="cartHeader">
+		<div class="cartHeader-bg">
+			<div class="container">
+				<div class="main">
+					<div class="logo">
+						<a href="index.html"><img src="images/PUBG-Logo-Transparent-Background.png"></a>
+					</div>
+					<div class="menu">
+						<ul>
+							<li>
+								<a href="index.html">Home</a>	
+							</li>
+							<li>
+								<a>About</a>	
+							</li>
+							<li>
+								<a>Services</a>	
+							</li>
+							<li>
+								<a>Contact</a>	
+							</li>
+						</ul>
+						<a href="cart.html"><i class="fa fa-shopping-cart"></i></a>	
+					</div>
+				</div>
+				<div class="cortHeadding">
+					<h1>ADDED ITEMS</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="itemsDisplay">
+		<div class="cortAddedItems" id="addingToCart">
+			<!--Here Is The Added Cart Items-->
+		</div>
+		<div id="itemsTotalSection" class="totalSection">
+			<!-- Show the price of added guns-->
+		</div>
+	</div>
+	<script>
+		//Added items
+		var getFromLocalStorage = localStorage.getItem('cartItems')
+		var parse = JSON.parse(getFromLocalStorage);
+		if (parse == null) {
+			document.getElementById('itemsTotalSection').innerHTML = '<span><strong>NOTE : </strong></span>No Items Added';
+		}
+		
+		if(parse){
+			for(i = 0; i < parse.length; i++){
+				var img = parse[i].img;
+				var name = parse[i].name;
+				var price = parse[i].price;
+				var id = parse[i].id;
+				var quantity = parse[i].quantity;
+
+				document.getElementById('addingToCart').innerHTML += '<div class="cortInnerItem">\
+					<div class="cortInnerItemWraper">\
+						<div class="CortImg">\
+							<img src="'+ img +'">\
+						</div>\
+						<div class="cartQuantity">\
+        					<input id="quantityAdd" oninput="quantityFixing(this)" type="number" min=1 max=10 name="quantity" value="'+ quantity +'" >\
+						</div>\
+						<div class="cortName">\
+							<h2 class="cortItemHeading">'+ name +'</h2>\
+							<h2 class="cortItemPrice"><span style="color:#cc4100;">&#x20b9; </span> '+ price +'</h2>\
+							<button class="RemoveButton" id="'+ id +'" onclick="removeF(this)">Remove</button>\
+						</div>\
+					</div>\
+				</div>';
+			}
+		}
+	
+		function removeF(e){
+
+			var getFromLocalStorage = localStorage.getItem('cartItems')
+			var parse = JSON.parse(getFromLocalStorage);
+                                                                 
+			for(i = 0; i < parse.length; i++){
+				var id = parse[i].id;
+				var price = parse[i].price;
+				var quantity = parse[i].quantity;
+				console.log(quantity);
+
+				//To remove the items from cart section
+				if(e.id == id){
+					parse.splice(i, 1);
+					localStorage.setItem('cartItems', JSON.stringify(parse));
+					var removedItemValue = total - (price * quantity);
+					document.getElementById('itemsTotalSection').innerHTML = '<span><strong>Total : </strong></span>'+ removedItemValue +' <span style="color:#cc4100;">&#x20b9;</span> ';
+					total = removedItemValue;
+
+					if( total == 0){
+						document.getElementById('itemsTotalSection').innerHTML = '<span><strong>NOTE : </strong></span>No Items Added';
+					}
+				}
+			}
+
+			e.parentNode.parentNode.parentNode.remove();	
+		}
+		var allprice = [];
+		
+		//displaying the added cart items
+		if(parse){
+			for(i = 0; i < parse.length; i++){
+				price = parse[i].price;
+				quantity = parse[i].quantity;
+				priceWithQuantity = quantity * price;
+				allprice.push(priceWithQuantity);
+
+			}
+		}
+
+		var total = allprice.reduce((a, b) => a + b, 0);
+
+		//Note message If the total is 0 
+		if (total == 0) {
+			document.getElementById('itemsTotalSection').innerHTML = '<span><strong>NOTE : </strong></span>Please add some items';
+		}
+
+		//Total amount of all products you selected
+		else document.getElementById('itemsTotalSection').innerHTML = '<span><strong>Total : </strong></span>'+ total +' <span style="color:#cc4100;">&#x20b9;</span> ';
+
+		function quantityFixing(selectedItemId){
+			// selectedItemId.value = selectedItemId.value.replace(/[^0-9.]/g, "").replace(/(\..*)\./g, "$1");
+			// selectedItemId.value = selectedItemId.value.replace(/^[1-9][0-9]*/, "");
+			if (selectedItemId.value.replace(/^[1-9][0-9]*/, "")) {
+				selectedItemId.value = "";
+			}
+			var value = selectedItemId.value;
+			var totall = total;
+			var selectedItemId = selectedItemId.parentNode.parentNode.children[2].children[2].id;
+
+			for(i = 0; i < parse.length; i++){
+				var parseId = parse[i].id;
+				var quantity = parse[i].quantity;
+				var price = parse[i].price;
+
+				if (selectedItemId == parseId) {
+
+					if(value == 0){
+						document.getElementById('alert').style.display="flex";
+
+						setTimeout(function(){ 
+							document.getElementById('alert').style.display="none";
+						}, 3000);
+
+					}
+
+					if (value > 0) {
+						document.getElementById('alert').style.display="none"
+						var itemPriceMiltipleQuantity = ((value * price) + totall) - price;
+						totall = itemPriceMiltipleQuantity;
+						document.getElementById('itemsTotalSection').innerHTML = '<span><strong>Total : </strong></span>'+ totall +' <span style="color:#cc4100;">&#x20b9;</span> ';
+					}
+				}
+			}
+		}
+	</script>
+</body>
+</html>
+
