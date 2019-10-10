@@ -70,6 +70,22 @@ body {
 
 /*header*/
 
+
+/* Video background */
+
+
+/* #myVideo {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    z-index: -1;
+} */
+
+
+/* Image Background */
+
 .header {
     background-image: url(../images/bgimg.jpg);
     background-size: cover;
