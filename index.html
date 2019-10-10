@@ -1,81 +1,100 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>PUBG</title>
-	<link rel="favicon" href="images/PUBG-Logo-Transparent-Background.png" sizes="150x150">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link href="https://fonts.googleapis.com/css?family=Mukta+Malar:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Mukta+Vaani:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	
+    <title>PUBG</title>
+    <link rel="favicon" href="images/PUBG-Logo-Transparent-Background.png" sizes="150x150">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Mukta+Malar:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Mukta+Vaani:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
+
 <body>
-	<div class="header">
-		<div class="header-bg">
-			<div class="container">
-				<div class="main">
-					<div class="logo">
-						<a href="index.html"><img src="images/PUBG-Logo-Transparent-Background.png"></a>
-					</div>
-					<div class="menu">
-						<ul>
-							<li>
-								<a href="index.html">Home</a>	
-							</li>
-							<li>
-								<a>About</a>	
-							</li>
-							<li>
-								<a>Services</a>	
-							</li>
-							<li>
-								<a>Contact</a>	
-							</li>
-						</ul>
-						<a href="cart.html" id="cart"><i class="fa fa-shopping-cart"></i><span class="badge">0</span></a>	
-					</div>
-				</div>
-				<div class="header-heading">
-					<h1>PUBG</h1>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="tbody">
-		<div class="side-section">
-			<div class="category-bg">
-				<h1>Category</h1>
-				<div id="cbForm">
-					<!-- here is the check box -->
-				</div>
-				<button class="cbsubmit" id="categoryfilterbtn">Submit</button>
-			</div>
-			<div class="">
-				<div class="total-filter">
-					<h1>Sort</h1>
-					<form id="allradio" name="allradio">	
-						<label class="radioLable"><input class="radioInput" id="r1" type="radio" name="filter" value="category" checked/><p>Display by Category</p></label>
-						<label class="radioLable"><input class="radioInput" id="r2" type="radio" name="filter" value="ascending"/><p>Sort by name(ascending)</p></label>
-						<label class="radioLable"><input class="radioInput" id="r3" type="radio" name="filter" value="descending"/><p>Sort by name(descending)</p></label>
-						<label class="radioLable"><input class="radioInput" id="r4" type="radio" name="filter" value="highestPrice"/><p>Sort by price(highest)</p></label>
-						<label class="radioLable"><input class="radioInput" id="r5" type="radio" name="filter" value="lowestPrice"/><p>Sort by pricelowest to highest price</p></label>
-					</form>
-				</div>
-			</div>
-		</div>
-		<div class="items">
-			<div class="item-bg" id="item-bgg">
-				<div class="searchplace">
-					<input id="search" type="text" name="search" placeholder="Search . . .">
-				</div>
-				<div class="item-wraper" id="products-wraper">
-					<!-- here is the Products -->
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="header">
+        <div class="header-bg">
+            <div class="container">
+                <div class="main">
+                    <div class="logo">
+                        <a href="index.html"><img src="images/PUBG-Logo-Transparent-Background.png"></a>
+                    </div>
+                    <div class="menu">
+                        <ul>
+                            <li>
+                                <a href="index.html">Home</a>
+                            </li>
+                            <li>
+                                <a>About</a>
+                            </li>
+                            <li>
+                                <a>Services</a>
+                            </li>
+                            <li>
+                                <a>Contact</a>
+                            </li>
+                        </ul>
+                        <a href="cart.html" id="cart"><i class="fa fa-shopping-cart"></i><span
+								class="badge">0</span></a>
+                    </div>
+                </div>
+                <div class="header-heading">
+                    <h1>PUBG</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tbody">
+        <div class="side-section">
+            <div class="category-bg">
+                <h1>Category</h1>
+                <div id="cbForm">
+                    <!-- here is the check box -->
+                </div>
+                <button class="cbsubmit" id="categoryfilterbtn">Submit</button>
+            </div>
+            <div class="">
+                <div class="total-filter">
+                    <h1>Sort</h1>
+                    <form id="allradio" name="allradio">
+                        <label class="radioLable"><input class="radioInput" id="r1" type="radio" name="filter"
+								value="category" checked />
+							<p>Display by Category</p>
+						</label>
+                        <label class="radioLable"><input class="radioInput" id="r2" type="radio" name="filter"
+								value="ascending" />
+							<p>Sort by name(ascending)</p>
+						</label>
+                        <label class="radioLable"><input class="radioInput" id="r3" type="radio" name="filter"
+								value="descending" />
+							<p>Sort by name(descending)</p>
+						</label>
+                        <label class="radioLable"><input class="radioInput" id="r4" type="radio" name="filter"
+								value="highestPrice" />
+							<p>Sort by price(highest)</p>
+						</label>
+                        <label class="radioLable"><input class="radioInput" id="r5" type="radio" name="filter"
+								value="lowestPrice" />
+							<p>Sort by pricelowest to highest price</p>
+						</label>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item-bg" id="item-bgg">
+                <div class="searchplace">
+                    <input id="search" type="text" name="search" placeholder="Search . . .">
+                </div>
+                <div class="item-wraper" id="products-wraper">
+                    <!-- here is the Products -->
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <script src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
+
 </html>
